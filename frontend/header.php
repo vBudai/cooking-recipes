@@ -1,24 +1,22 @@
 <div class="header">
     <div class="header__container">
-
         <a style="display: inline-block" href="">
             <div class="logo"></div>
         </a>
-        <div style="display: flex; align-items: center">
-            <div class="search">
-                <form method="post" action="search.php">
-                    <input class="search__form" type="text" placeholder="Найти рецепт...">
-                    <input class="search__btn" type="submit" value="">
-                </form>
-            </div>
-
+        <div class="search">
+            <form method="post" action="search.php">
+                <input class="search__form" type="text" placeholder="Найти рецепт...">
+                <input class="search__btn" type="submit" value="">
+            </form>
             <div class="create-recipe">
                 <a href="#" style="display: block; margin: auto auto;">
                     <img src="./frontend/img/add-recipe_icon.svg" alt="add">
                 </a>
             </div>
+            <a class="auth" href="">
+                <img src="/frontend/img/login.svg">
+            </a>
         </div>
-
 
         <div class="menu">
             <ul class="menu__list">
@@ -34,6 +32,8 @@
                 <span class="bar"></span>
             </div>
         </div>
+
+
 
         <script>
             let hamb = document.querySelector(".hamb");

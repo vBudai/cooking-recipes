@@ -1,5 +1,17 @@
 $main-color-yellow: rgb(240, 255, 0);
 $color-border: #b6b6b6;
+$shadow-gray: 0px 0px 5px 1px rgba(182, 182, 182);
+$shadow-black: 0px 0px 5px 1px rgba(0, 0, 0);
+
+%no-border{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid $color-border;
+  &:focus{
+    outline: none;
+  }
+}
 
 a{
   text-decoration: none;
@@ -8,7 +20,7 @@ a{
 body{
   min-height: 100vh;
   max-width: 100vw;
-  font-family: Roboto, serif;
+  font-family: Manrope, serif;
 }
 
 .page{
@@ -19,26 +31,19 @@ body{
 }
 
 .header{
-  padding: 10px;
   border-bottom: 1px solid $color-border;
   box-shadow: 0px 4px 5px -5px rgba(34, 60, 80, 0.6);
 }
 
 .header__container{
-  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  @media screen and (min-width: 768px){
-    max-width: 750px;
-    justify-content: center;
-  }
-
+  justify-content: center;
+  padding: 2px 5px;
   @media screen and (min-width: 1024px){
-    justify-content: space-between;
-    max-width: 1024px;
+    padding: 10px 5px;
   }
 }
 
@@ -50,58 +55,85 @@ a{
   color: black;
   font-weight: 900;
   background: $main-color-yellow;
-  padding: 10px 15px;
-  font-size: 20px;
+  padding: 5px 15px;
+  font-size: 16px;
   height: 100%;
 
   &:before{
     content: 'ХХ';
   }
 
+  @media screen and (min-width: 768px){
+    &:before{
+      font-size: 1.5em;
+    }
+  }
+
   @media screen and (min-width: 1024px){
     &:before{
       content: 'ХавайХавай';
-      font-size: 1.25em;
+      font-size: 1.5em;
+      padding: 10px 15px;
     }
+  }
+  @media screen and (min-width: 2560px){
+    font-size: 1.25em;
   }
 }
 
 .search{
-  @media screen and (min-width: 1024px){
-    margin-left: 6%;
-  }
+  display: flex;
+  justify-content: center;
+
 }
 
 .search form{
+  margin: 0;
+  padding: 5px;
   display: flex;
   height: 100%;
-  padding: 0;
-  width: 100%;
+
   .search__form{
+    display: block;
     border-radius: 25px;
     border: 1px solid $color-border;
-    padding: 0 15px;
+    padding: 5px 15px;
     width: 100%;
-    margin: 0 5px;
+    margin: auto 5px auto 5px;
+    height: 100%;
     &:focus{
       outline: 0;
       border: 1px solid $main-color-yellow;
       box-shadow: 0 0 5px 2px rgba(240, 255, 0, 0.53);
     }
+    @media screen and (min-width: 700px) {
+      font-size: 1.1em;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 1.25em;
+    }
+    @media screen and (min-width: 2560px){
+      font-size: 1.5em;
+    }
   }
 
   .search__btn{
-    width: 60px;
-    height: 40px;
+    height: 35px;
+    width: 50px;
     border: 1px solid #d5d5d5;
     background: url("../img/search_icon.svg") no-repeat center;
-    background-size: 30px;
+    background-size: 25px 25px;
     border-radius: 10px;
-    margin-right: 5px;
     cursor: pointer;
+    margin: auto 5px auto 0;
     &:focus, &:hover{
-      border: none;
+      border: 1px solid $main-color-yellow;
       background-color: $main-color-yellow;
+    }
+    @media screen and (min-width: 2560px){
+      height: 45px;
+      width: 55px;
+      background-size: 30px 30px;
     }
   }
 }
@@ -111,33 +143,79 @@ a{
   @media screen and (min-width: 700px){
     border: 1px solid #d5d5d5;
     border-radius: 10px;
-    margin-right: 5px;
-    width: 60px;
-    height: 40px;
+    height: 35px;
+    width: 45px;
     display: flex;
     justify-content: center;
+      margin: auto 5px auto 0;
     &:active, &:hover{
-      border: none;
+      border: 1px solid $main-color-yellow;
       background-color: $main-color-yellow;
     }
     img{
       display: block;
       margin: auto auto;
-      height: 30px;
-      width: 30px;
+      height: 25px;
+      width: 25px;
+      padding-left: 2px;
     }
   }
+  @media screen and (min-width: 2560px){
+    height: 45px;
+    width: 55px;
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
 
+.auth{
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  height: 35px;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  margin: auto 5px auto 0;
+  &:active, &:hover{
+    border: 1px solid $main-color-yellow;
+    background-color: $main-color-yellow;
+  }
+  img{
+    display: block;
+    margin: auto auto;
+    height: 25px;
+    width: 25px;
+    padding-right: 2px;
+  }
+  @media screen and (min-width: 700px){
+    height: 35px;
+    width: 45px;
+    img{
+      height: 25px;
+      width: 25px;
+    }
+  }
+  @media screen and (min-width: 2560px){
+    height: 45px;
+    width: 55px;
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 .menu{
+  margin-left: 5px;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
 .menu__list{
-  background-color: #fff;
+  background: #ffffff;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -145,8 +223,7 @@ a{
   text-align: center;
   transition: 0.3s;
   right: -100%;
-  top: 4.5rem;
-
+  top: 3.2rem;
   @media screen and (min-width: 500px){
     width: 33.33%;
     height: 100%;
@@ -158,8 +235,9 @@ a{
     position: static;
     flex-direction: row;
     align-items: center;
-    width: auto;
-    height: auto;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
     top: 0;
     right: 0;
     border: none;
@@ -178,7 +256,6 @@ a{
     background: $main-color-yellow;
     text-decoration: none;
     font-weight: 900;
-
     @media screen and (min-width: 700px) {
       display: none;
     }
@@ -215,27 +292,29 @@ a{
     @media screen and (min-width: 768px){
       border-bottom: 0;
       text-decoration: none;
-      padding: 0 5px;
-      font-size: 1.25em;
+      padding: 0 4px;
     }
     @media screen and (min-width: 1024px){
-      border-bottom: 0;
-      text-decoration: none;
-      padding: 0 20px;
-      font-size: 1.3em;
+      font-size: 1.25em;
+    }
+    @media screen and (min-width: 2560px){
+      font-size: 1.5em;
     }
   }
 
   @media screen and (min-width: 768px){
     border-bottom: 0;
   }
-
+  @media screen and (min-width: 2560px){
+    padding: 0 10px;
+  }
 }
 
 .hamb{
   display: block;
   cursor: pointer;
-  padding: 10px;
+  padding: 2px 4px;
+  margin: 5px;
   border-radius: 10px;
 
   &:hover{
@@ -323,7 +402,7 @@ a{
 .info__grid{
   display: grid;
   border: 1px solid $color-border;
-  box-shadow: 0px 0px 5px 1px rgba(182, 182, 182);
+  box-shadow: $shadow-gray;
   border-radius: 15px;
   width: 100%;
   justify-items: center;
@@ -415,8 +494,10 @@ a{
   background: $main-color-yellow;
   display: inline-block;
   border-radius: 5px;
-  padding: 5px 15px;
-  margin-bottom: 5px;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 5px 20px;
+  margin-bottom: 10px;
 }
 
 .step__img {
@@ -471,7 +552,7 @@ a{
 .food{
   background: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 0 5px 1px rgba(182, 182, 182);
+  box-shadow: $shadow-gray;
   margin-bottom: 20px;
   width: 310px;
   transition: transform 0.2s;
@@ -530,4 +611,260 @@ a{
 .food__link{
   display: block;
   color: #000
+}
+
+.recipe__title input{
+  @extend %no-border;
+  font-weight: 500;
+  width: 41%;
+  transition: all 0.2s ease-in;
+  &:focus{
+    outline: none;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+  &::placeholder{
+    font-weight: 100;
+  }
+  @media screen and (min-width: 768px){
+    width: 30%;
+  }
+}
+
+.recipe__info textarea{
+  width: 100%;
+  border-radius: 15px;
+  padding: 10px;
+  resize: none;
+}
+
+.recipe__img{
+  input{
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+  }
+}
+
+.recipe__img__input{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 150px;
+  border-radius: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(182, 182, 182, 0.25);
+  img{
+    margin: 0 auto;
+    height: 36px;
+    width: 36px;
+  }
+  @media screen and (min-width: 660px) {
+    height: 300px;
+  }
+  @media screen and (min-width: 1024px) {
+    height: 400px;
+  }
+}
+
+.main-img__container{
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin: auto 0;
+  height: fit-content;
+
+}
+
+.info__description{
+  textarea{
+    height: 100px;
+    border-radius: 15px;
+    border: 1px solid $color-border;
+    resize: none;
+    &:focus{
+      outline: none;
+      border: 1px solid #000;
+    }
+    @media screen and (min-width: 660px) {
+      height: 150px;
+    }
+  }
+}
+
+.add-ingredient__input{
+  margin-top: 5px;
+  margin-left: 5px;
+  @extend %no-border;
+  border-bottom: 1px solid $color-border;
+}
+
+.add-ingredient__btn{
+  margin-top: 10px;
+  background: $main-color-yellow;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  &:active{
+    outline: 1px solid #000;
+  }
+}
+
+.cooking-time, .portions-count{
+  margin-left: 10px;
+  margin-top: 15px;
+  input{
+    @extend %no-border;
+    width: 90%;
+  }
+}
+
+.step-img__input{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 125px;
+  border-radius: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(182, 182, 182, 0.25);
+  input{
+    opacity: 0;
+    position: absolute;
+  }
+  img{
+    margin: 0 auto;
+    height: 36px;
+    width: 36px;
+  }
+  @media screen and (min-width: 660px) {
+    min-height: 175px;
+  }
+  @media screen and (min-width: 1024px) {
+    height: 250px;
+  }
+}
+
+.step__info{
+  textarea{
+    resize: none;
+    width: 100%;
+    background: #fff;
+    border: 1px solid $color-border;
+    border-radius: 15px;
+    min-height: 100px;
+    padding: 10px;
+    &:focus{
+      outline: 1px solid #000;
+    }
+    @media screen and (min-width: 660px) {
+      height: 100%;
+      margin: -5px;
+    }
+  }
+}
+
+.add-step-btn{
+  display: block;
+  margin: 0 auto 30px;
+  background: $main-color-yellow;
+  border-radius: 25px;
+  border: 0;
+  font-weight: 200;
+  padding: 10px 15px;
+}
+
+.add-recipe-btn{
+  display: block;
+  margin: 0 auto 15px;
+  font-size: 20px;
+  background: $main-color-yellow;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 10px 15px;
+
+  &:hover{
+    box-shadow: $shadow-gray;
+  }
+
+  &:focus{
+    box-sizing: border-box;
+    outline: 0;
+  }
+}
+
+.margin-btm-15{
+  margin-bottom: 15px;
+}
+
+.profile{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 15px auto 0;
+  width: auto;
+  form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 768px)  {
+    form{
+      font-size: 0.7em;
+    }
+    span{
+      font-size: 1em;
+    }
+  }
+}
+
+.nickname, .password{
+  background: #fff;
+  border-radius: 15px;
+  padding: 5px 10px;
+  border: 1px solid $color-border;
+  margin: 5px 0 5px;
+  font-weight: 300;
+  &:focus{
+    outline: 1px solid #000;
+    box-shadow: $shadow-black;
+
+  }
+  &::placeholder{
+    font-weight: 200;
+  }
+  &:hover:not(:focus){
+    box-shadow: $shadow-gray;
+  }
+}
+
+.btn{
+  margin: 15px auto 5px;
+  background: $main-color-yellow;
+  border-radius: 10px;
+  padding: 5px 25px;
+  border: 0;
+  letter-spacing: 1px;
+  font-weight: 600;
+  min-width: 100px;
+  width: fit-content;
+  &:focus, &:hover{
+    outline: 1px solid #000;
+  }
+}
+
+.login{
+  margin: 10px 0 5px 0;
+}
+
+.reg{
+  margin: 15px 0 5px 0;
 }
