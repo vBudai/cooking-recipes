@@ -865,10 +865,18 @@ a {
 }
 @media screen and (min-width: 768px) {
   .profile form {
-    font-size: 0.7em;
+    font-size: 1.1em;
   }
   .profile span {
-    font-size: 1em;
+    font-size: 1.3em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .profile form {
+    font-size: 1.2em;
+  }
+  .profile span {
+    font-size: 1.4em;
   }
 }
 

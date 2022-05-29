@@ -16,9 +16,9 @@
     require "data/dbconnect.php";
     require "frontend/header.php";
 
-    require "frontend/recipe.php";
-    require "frontend/main.php";
-    require "frontend/creationRecipe_form.php";
+    //require "frontend/recipe.php";
+    //require "frontend/main.php";
+    //require "frontend/creationRecipe_form.php";
     require "frontend/login_form.php"
 ?>
 
