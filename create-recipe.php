@@ -1,12 +1,13 @@
 <?php
 use Cloudinary\Api\Upload\UploadApi;
-use Cloudinary\Configuration\Configuration;
+
 
     session_start();
     set_time_limit(180);
 
     require "database/db.php";
     require "vendor/autoload.php";
+    require "database/cloud_connect.php";
 
     $id_user = $_SESSION['id'];
 
@@ -14,13 +15,7 @@ use Cloudinary\Configuration\Configuration;
     $category = $_POST['category'];
     $recipe_info = $_POST['recipe-info'];
 
-    Configuration::instance([
-        'cloud' => [
-            'cloud_name' => 'dx0qgt7t5',
-            'api_key' => '865836562758274',
-            'api_secret' => 'SWsgAexbXSDKkMnvIbbgZIa2QXc'],
-        'url' => [
-            'secure' => true]]);
+
 
     if($_FILES['main-img']['tmp_name'] == ""){
         $imgUrl = "https://res.cloudinary.com/dx0qgt7t5/image/upload/v1665838173/cooking-recipes/nofoto_j3flby.png";
@@ -107,5 +102,5 @@ use Cloudinary\Configuration\Configuration;
         insert("step", $item);
     }
 
-    header("Location: https://vbudai.github.io/cooking-recipes/index.php?page=recipe&id_recipe=$id_recipe");
+    header("Location: https://cooking-recipes/index.php?page=recipe&id_recipe=$id_recipe");
     exit();

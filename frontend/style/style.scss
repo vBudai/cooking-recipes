@@ -856,9 +856,12 @@ a{
 .main-img__container{
   display: block;
   text-align: center;
-  width: 100%;
   margin: auto 0;
   height: fit-content;
+  width: fit-content;
+  img{
+    object-fit: contain;
+  }
 }
 
 .info__description{

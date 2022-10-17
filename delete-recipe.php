@@ -1,8 +1,8 @@
 <?php
 require "database/db.php";
 require "path.php";
+require "database/cloud_connect.php";
 use Cloudinary\Api\Upload\UploadApi;
-use Cloudinary\Configuration\Configuration;
 
     $id_recipe = $_GET['id'];
     $recipe = selectOne('recipe', ['id' => $id_recipe]);
@@ -10,13 +10,7 @@ use Cloudinary\Configuration\Configuration;
     $ingredients = selectAll('ingredient', ['id_recipe' => $id_recipe]);
 
 
-    Configuration::instance([
-        'cloud' => [
-            'cloud_name' => 'dx0qgt7t5',
-            'api_key' => '865836562758274',
-            'api_secret' => 'SWsgAexbXSDKkMnvIbbgZIa2QXc'],
-        'url' => [
-            'secure' => true]]);
+
 
     // Удаление ингредиентов
     for($i = 0; $i < count($ingredients); $i++){
