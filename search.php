@@ -1,4 +1,4 @@
 <?php
     $search = $_POST['searchTitle'];
-    header("Location: https://cooking-recipes/index.php?page=search&search=$search");
+    header("Location: https://your-recipess.herokuapp.com/index.php?page=search&search=$search");
     exit();

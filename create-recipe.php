@@ -102,5 +102,5 @@ use Cloudinary\Api\Upload\UploadApi;
         insert("step", $item);
     }
 
-    header("Location: https://cooking-recipes/index.php?page=recipe&id_recipe=$id_recipe");
+    header("Location: https://your-recipess.herokuapp.com/index.php?page=recipe&id_recipe=$id_recipe");
     exit();
