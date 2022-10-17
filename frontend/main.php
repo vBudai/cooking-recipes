@@ -1,52 +1,29 @@
+<?php
+    $recipe = selectAll('recipe', ['category' => $category]);
+?>
+
+
 <div class="content-container">
     <div class="page__title">
-        Завтрак
+        <?= $category ?>
     </div>
+
     <div class="grid-food">
-        <a href="#" class="food__link">
-            <div class="food">
-                <div class="food__img">
-                    <img src="https://flytothesky.ru/wp-content/uploads/2018/11/636547.jpg" alt="food">
-                </div>
-                <div class="grid-food2">
-                    <div class="food__title"><div>НазваниеНазваниеНазваниеНазваниеНазвание</div></div>
-                    <div class="food__cooking-time"><div>55 мин</div></div>
-                </div>
+        <?php for($i = 0; $i < count($recipe); $i++){?>
+            <div class="food__container">
+                <a href="index.php?page=recipe&id_recipe=<?= $recipe[$i]['id'] ?>" class="food__link">
+                    <div class="food">
+                        <div class="food__img">
+                            <img src="<?= $recipe[$i]['mainImage'] ?>" alt="food">
+                        </div>
+                        <div class="grid-food2">
+                            <div class="food__title"><div><?= $recipe[$i]['title'] ?></div></div>
+                            <div class="food__cooking-time"><div><?= $recipe[$i]['cookingTime'] ?></div></div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
-        <a href="#" class="food__link">
-            <div class="food">
-                <div class="food__img">
-                    <img src="https://flytothesky.ru/wp-content/uploads/2018/11/636547.jpg" alt="food">
-                </div>
-                <div class="grid-food2">
-                    <div class="food__title"><div>НазваниеНазваниеНазваниеНазваниеНазвание</div></div>
-                    <div class="food__cooking-time"><div>55 мин</div></div>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="food__link">
-            <div class="food">
-                <div class="food__img">
-                    <img src="https://flytothesky.ru/wp-content/uploads/2018/11/636547.jpg" alt="food">
-                </div>
-                <div class="grid-food2">
-                    <div class="food__title"><div>НазваниеНазваниеНазваниеНазваниеНазвание</div></div>
-                    <div class="food__cooking-time"><div>55 мин</div></div>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="food__link">
-            <div class="food">
-                <div class="food__img">
-                    <img src="https://flytothesky.ru/wp-content/uploads/2018/11/636547.jpg" alt="food">
-                </div>
-                <div class="grid-food2">
-                    <div class="food__title"><div>НазваниеНазваниеНазваниеНазваниеНазвание</div></div>
-                    <div class="food__cooking-time"><div>55 мин</div></div>
-                </div>
-            </div>
-        </a>
+        <?php } ?>
     </div>
 </div>
 

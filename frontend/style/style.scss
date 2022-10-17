@@ -1,4 +1,5 @@
 $main-color-yellow: rgb(240, 255, 0);
+$main-color-yellow-active: rgb(221, 243, 0);
 $color-border: #b6b6b6;
 $shadow-gray: 0px 0px 5px 1px rgba(182, 182, 182);
 $shadow-black: 0px 0px 5px 1px rgba(0, 0, 0);
@@ -32,7 +33,7 @@ body{
 
 .header{
   border-bottom: 1px solid $color-border;
-  box-shadow: 0px 4px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: px 4px 5px -5px rgba(34, 60, 80, 0.6);
 }
 
 .header__container{
@@ -65,7 +66,7 @@ a{
 
   @media screen and (min-width: 768px){
     &:before{
-      font-size: 1.5em;
+      font-size: 1.25em;
     }
   }
 
@@ -208,6 +209,7 @@ a{
 }
 
 .menu{
+  z-index: 2;
   margin-left: 5px;
   height: 100%;
   display: flex;
@@ -420,50 +422,62 @@ a{
 
 .info__ingredients {
   grid-area: ingr;
-  margin: 10px 0 10px 0;
+  margin: 10px auto 10px 3em;
   text-align: center;
-
   ul{
     list-style: none;
+    text-align: start;
     padding: 0;
     margin: 0;
   }
 }
 
-.info__checkbox{
+.info__real-checkbox{
+  width: 0;
+  height: 0;
+  opacity: 0;
   position: absolute;
   z-index: -1;
-  opacity: 0;
-  &+label{
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-    &:before{
-      content: '';
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      flex: 0 0 auto;
-      border: 1px solid $color-border;
-      border-radius: 0.25em;
-      margin-right: 0.5em;
-      background-size: 50% 50%;
-      background: no-repeat center;
-    }
-    &:hover:before{
-      border: 1px solid black;
-    }
-    &:active:before{
-      border: 1px solid black;
-      background: $main-color-yellow;
+  &:checked + .info__custom-checkbox::before{
+    transform: translate(-50%, -50%) scale(1);
+  }
+  &:checked + .info__custom-checkbox{
+    border: 1px solid $main-color-yellow;
+    background: $main-color-yellow;
+  }
+}
+.checkbox-label{
+  &:hover{
+    .info__custom-checkbox{
+      border: 1px solid #000;
     }
   }
-  &:checked+label:before{
-    border-color: $main-color-yellow;
-    background-color: $main-color-yellow;
-    background-image: url("../img/checked-icon.svg");
+}
+.info__custom-checkbox{
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid $color-border;
+  background: white;
+  border-radius: 3px;
+  vertical-align: sub;
+  margin-bottom: 3px;
+  &:before{
+    height: 12px;
+    width: 12px;
+    content: '';
+    display: inline-block;
+    background-image: url("https://res.cloudinary.com/dx0qgt7t5/image/upload/v1665949434/checked-icon_otu5yt.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.1s ease-in;
   }
-  
+
 }
 
 .info__cooking-time {
@@ -471,10 +485,16 @@ a{
   margin: 10px 0 10px 0;
   background: url("../img/timer-icon.svg") no-repeat;
   padding-left: 1.75em;
+  width: 100%;
+  text-align: start;
+  transform: translate(30%, 0);
 }
 .info__portions-count {
+  width: 100%;
+  text-align: start;
+  transform: translate(30%, 0);
   grid-area: some_Info2;
-  margin-right: 1.55em;
+  margin-bottom: 10px;
   &>div{
     background: url("../img/portions-icon.svg") no-repeat;
     background-size: contain;
@@ -504,13 +524,24 @@ a{
   img{
     width: 100%;
     height: auto;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 15px;
     @media screen and (min-width: 425px) {
-      width: 66%;
+      width: 80%;
       margin: 0 auto;
     }
     @media screen and (min-width: 600px) {
       width: 100%;
+    }
+    @media screen and (min-width: 320px){
+      max-height: 150px;
+    }
+    @media screen and (min-width: 660px){
+      max-height: 250px;
+    }
+    @media screen and (min-width: 990px){
+      max-height: 350px;
     }
   }
   @media screen and (min-width: 600px) {
@@ -548,6 +579,39 @@ a{
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.food-create-link__container{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 660px) {
+    margin: 0 15px 0 0;
+  }
+  @media screen and (min-width: 990px) {
+    margin: 0 20px 0 0;
+  }
+}
+
+.food__create-link{
+  z-index: 1;
+  display: inline-block;
+  background: rgba(182, 182, 182, 0.25);
+  border-radius: 15px;
+  width: 100%;
+  margin: 40px 0 auto 0;
+  padding: 10px 0;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: $shadow-gray;
+  transform: translate(0, -50%);
+  transition: transform 0.2s;
+  color: black;
+  &:hover{
+    transform: translate(0, -50%) scale(105%);
+    color: black;
+  }
+}
+
+
 
 .food{
   background: #ffffff;
@@ -555,11 +619,74 @@ a{
   box-shadow: $shadow-gray;
   margin-bottom: 20px;
   width: 310px;
+}
+
+.food__container{
+  position: relative;
   transition: transform 0.2s;
+  @media screen and (min-width: 320px) {
+      .food-delete {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 5px;
+        cursor: pointer;
+
+        span {
+          display: block;
+          height: 3px;
+          width: 25px;
+          border-radius: 5px;
+          background: rgba(0, 0, 0, 0.76);
+        }
+
+        span:first-child {
+          transform: translate(0, 50%) rotate(45deg);
+        }
+
+        span:last-child {
+          transform: translate(0, -50%) rotate(-45deg);
+        }
+      }
+  }
+  @media screen and (min-width: 660px){
+    .food-delete{
+      right: 25px;
+    }
+  }
+  @media screen and (min-width: 990px){
+    .food-delete{
+      right: 27px;
+    }
+  }
+  @media screen and (min-width: 1080px){
+    .food-delete{
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    &:hover{
+      .food-delete{
+        opacity: 100;
+        &:hover{
+          transition: 0.25s;
+          background: rgba(255, 255, 255, 0.56);
+        }
+      }
+    }
+  }
   &:hover{
     transform: scale(105%);
   }
+
+
 }
+
 
 .food__img{
   max-width: 100%;
@@ -570,6 +697,8 @@ a{
     object-fit: cover;
   }
 }
+
+
 
 .grid-food2{
   display: grid;
@@ -599,7 +728,7 @@ a{
   position: relative;
   grid-area: b;
   &>div{
-    display: inline;
+    display: inline-block;
     font-weight: bold;
     background: url("../img/timer-icon.svg") no-repeat $main-color-yellow 0.4em center;
     background-size: 1em;
@@ -610,7 +739,8 @@ a{
 
 .food__link{
   display: block;
-  color: #000
+  color: #000;
+  height: 100%;
 }
 
 .recipe__title input{
@@ -631,6 +761,41 @@ a{
   }
 }
 
+.recipe__category{
+  margin: 15px 0 10px 0;
+  display: inline-block;
+  position: relative;
+}
+
+.select-category{
+  appearance: none; //Убирает стрелочку
+  border: 1px solid $color-border;
+  border-radius: 5px;
+  background: #fff;
+  padding: 2px 25px 2px 10px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.select-arrow{
+  &:before{
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -25%);
+
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8.7px 5px 0 5px;
+    border-color: black transparent transparent transparent;
+    pointer-events: none;
+  }
+}
+
 .recipe__info textarea{
   width: 100%;
   border-radius: 15px;
@@ -639,6 +804,25 @@ a{
 }
 
 .recipe__img{
+  img{
+    display: block;
+    margin: 0 auto;
+    min-width: 75%;
+    width: auto;
+    height: auto;
+    max-height: 35vh;
+    @media screen and (min-width: 320px){
+      max-height: 200px;
+    }
+    @media screen and (min-width: 660px){
+      max-height: 300px;
+    }
+    @media screen and (min-width: 990px){
+      max-height: 400px;
+    }
+    object-fit: cover;
+  }
+
   input{
     opacity: 0;
     position: absolute;
@@ -675,7 +859,6 @@ a{
   width: 100%;
   margin: auto 0;
   height: fit-content;
-
 }
 
 .info__description{
@@ -702,14 +885,22 @@ a{
 }
 
 .add-ingredient__btn{
-  margin-top: 10px;
   background: $main-color-yellow;
   border-radius: 15px;
-  outline: none;
   border: none;
   padding: 5px 10px;
+  transition: transform 0.2s;
+  width: fit-content;
+  height: fit-content;
+  margin: 10px auto 0;
+  cursor: pointer;
+  &:hover{
+    outline: 1px solid #000;
+  }
   &:active{
     outline: 1px solid #000;
+    transform: scale(98%);
+    background: $main-color-yellow-active;
   }
 }
 
@@ -749,6 +940,7 @@ a{
   }
 }
 
+
 .step__info{
   textarea{
     resize: none;
@@ -770,12 +962,23 @@ a{
 
 .add-step-btn{
   display: block;
-  margin: 0 auto 30px;
+  width: 250px;
+  text-align: center;
+  margin: 15px auto 30px;
   background: $main-color-yellow;
   border-radius: 25px;
   border: 0;
   font-weight: 200;
   padding: 10px 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  &:hover{
+    outline: 1px solid #000;
+  }
+  &:active{
+    background: $main-color-yellow-active;
+    transform: scale(99%);
+  }
 }
 
 .add-recipe-btn{
@@ -810,12 +1013,17 @@ a{
   font-weight: 600;
   font-size: 18px;
   margin: 15px auto 0;
-  width: auto;
+  max-width: 300px;
   form{
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    >div{
+      max-width: 100%;
+    }
   }
+
   @media screen and (min-width: 768px)  {
     form{
       font-size: 1.1em;
@@ -875,4 +1083,12 @@ a{
 
 .reg{
   margin: 15px 0 5px 0;
+}
+
+.error{
+  font-size: 0.7em;
+  font-weight: 200;
+  color: red;
+  font-style: italic;
+  text-decoration: underline;
 }

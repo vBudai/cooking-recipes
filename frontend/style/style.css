@@ -28,7 +28,7 @@ body {
 
 .header {
   border-bottom: 1px solid #b6b6b6;
-  box-shadow: 0px 4px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: px 4px 5px -5px rgba(34, 60, 80, 0.6);
 }
 
 .header__container {
@@ -62,7 +62,7 @@ a {
 }
 @media screen and (min-width: 768px) {
   .logo:before {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -218,6 +218,7 @@ a {
 }
 
 .menu {
+  z-index: 2;
   margin-left: 5px;
   height: 100%;
   display: flex;
@@ -449,48 +450,59 @@ a {
 
 .info__ingredients {
   grid-area: ingr;
-  margin: 10px 0 10px 0;
+  margin: 10px auto 10px 3em;
   text-align: center;
 }
 .info__ingredients ul {
   list-style: none;
+  text-align: start;
   padding: 0;
   margin: 0;
 }
 
-.info__checkbox {
+.info__real-checkbox {
+  width: 0;
+  height: 0;
+  opacity: 0;
   position: absolute;
   z-index: -1;
-  opacity: 0;
 }
-.info__checkbox + label {
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
+.info__real-checkbox:checked + .info__custom-checkbox::before {
+  transform: translate(-50%, -50%) scale(1);
 }
-.info__checkbox + label:before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  flex: 0 0 auto;
-  border: 1px solid #b6b6b6;
-  border-radius: 0.25em;
-  margin-right: 0.5em;
-  background-size: 50% 50%;
-  background: no-repeat center;
-}
-.info__checkbox + label:hover:before {
-  border: 1px solid black;
-}
-.info__checkbox + label:active:before {
-  border: 1px solid black;
+.info__real-checkbox:checked + .info__custom-checkbox {
+  border: 1px solid rgb(240, 255, 0);
   background: rgb(240, 255, 0);
 }
-.info__checkbox:checked + label:before {
-  border-color: rgb(240, 255, 0);
-  background-color: rgb(240, 255, 0);
-  background-image: url("../img/checked-icon.svg");
+
+.checkbox-label:hover .info__custom-checkbox {
+  border: 1px solid #000;
+}
+
+.info__custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #b6b6b6;
+  background: white;
+  border-radius: 3px;
+  vertical-align: sub;
+  margin-bottom: 3px;
+}
+.info__custom-checkbox:before {
+  height: 12px;
+  width: 12px;
+  content: "";
+  display: inline-block;
+  background-image: url("https://res.cloudinary.com/dx0qgt7t5/image/upload/v1665949434/checked-icon_otu5yt.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.1s ease-in;
 }
 
 .info__cooking-time {
@@ -498,11 +510,17 @@ a {
   margin: 10px 0 10px 0;
   background: url("../img/timer-icon.svg") no-repeat;
   padding-left: 1.75em;
+  width: 100%;
+  text-align: start;
+  transform: translate(30%, 0);
 }
 
 .info__portions-count {
+  width: 100%;
+  text-align: start;
+  transform: translate(30%, 0);
   grid-area: some_Info2;
-  margin-right: 1.55em;
+  margin-bottom: 10px;
 }
 .info__portions-count > div {
   background: url("../img/portions-icon.svg") no-repeat;
@@ -534,17 +552,34 @@ a {
 .step__img img {
   width: 100%;
   height: auto;
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 15px;
 }
 @media screen and (min-width: 425px) {
   .step__img img {
-    width: 66%;
+    width: 80%;
     margin: 0 auto;
   }
 }
 @media screen and (min-width: 600px) {
   .step__img img {
     width: 100%;
+  }
+}
+@media screen and (min-width: 320px) {
+  .step__img img {
+    max-height: 150px;
+  }
+}
+@media screen and (min-width: 660px) {
+  .step__img img {
+    max-height: 250px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .step__img img {
+    max-height: 350px;
   }
 }
 @media screen and (min-width: 600px) {
@@ -593,15 +628,106 @@ a {
   }
 }
 
+.food-create-link__container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 660px) {
+  .food-create-link__container {
+    margin: 0 15px 0 0;
+  }
+}
+@media screen and (min-width: 990px) {
+  .food-create-link__container {
+    margin: 0 20px 0 0;
+  }
+}
+
+.food__create-link {
+  z-index: 1;
+  display: inline-block;
+  background: rgba(182, 182, 182, 0.25);
+  border-radius: 15px;
+  width: 100%;
+  margin: 40px 0 auto 0;
+  padding: 10px 0;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0px 0px 5px 1px rgb(182, 182, 182);
+  transform: translate(0, -50%);
+  transition: transform 0.2s;
+  color: black;
+}
+.food__create-link:hover {
+  transform: translate(0, -50%) scale(105%);
+  color: black;
+}
+
 .food {
   background: #ffffff;
   border-radius: 15px;
   box-shadow: 0px 0px 5px 1px rgb(182, 182, 182);
   margin-bottom: 20px;
   width: 310px;
+}
+
+.food__container {
+  position: relative;
   transition: transform 0.2s;
 }
-.food:hover {
+@media screen and (min-width: 320px) {
+  .food__container .food-delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .food__container .food-delete span {
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.76);
+  }
+  .food__container .food-delete span:first-child {
+    transform: translate(0, 50%) rotate(45deg);
+  }
+  .food__container .food-delete span:last-child {
+    transform: translate(0, -50%) rotate(-45deg);
+  }
+}
+@media screen and (min-width: 660px) {
+  .food__container .food-delete {
+    right: 25px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .food__container .food-delete {
+    right: 27px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .food__container .food-delete {
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .food__container:hover .food-delete {
+    opacity: 100;
+  }
+  .food__container:hover .food-delete:hover {
+    transition: 0.25s;
+    background: rgba(255, 255, 255, 0.56);
+  }
+}
+.food__container:hover {
   transform: scale(105%);
 }
 
@@ -644,7 +770,7 @@ a {
   grid-area: b;
 }
 .food__cooking-time > div {
-  display: inline;
+  display: inline-block;
   font-weight: bold;
   background: url("../img/timer-icon.svg") no-repeat rgb(240, 255, 0) 0.4em center;
   background-size: 1em;
@@ -655,6 +781,7 @@ a {
 .food__link {
   display: block;
   color: #000;
+  height: 100%;
 }
 
 .recipe__title input {
@@ -676,6 +803,37 @@ a {
   }
 }
 
+.recipe__category {
+  margin: 15px 0 10px 0;
+  display: inline-block;
+  position: relative;
+}
+
+.select-category {
+  appearance: none;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  background: #fff;
+  padding: 2px 25px 2px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.select-arrow:before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -25%);
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8.7px 5px 0 5px;
+  border-color: black transparent transparent transparent;
+  pointer-events: none;
+}
+
 .recipe__info textarea {
   width: 100%;
   border-radius: 15px;
@@ -683,6 +841,30 @@ a {
   resize: none;
 }
 
+.recipe__img img {
+  display: block;
+  margin: 0 auto;
+  min-width: 75%;
+  width: auto;
+  height: auto;
+  max-height: 35vh;
+  object-fit: cover;
+}
+@media screen and (min-width: 320px) {
+  .recipe__img img {
+    max-height: 200px;
+  }
+}
+@media screen and (min-width: 660px) {
+  .recipe__img img {
+    max-height: 300px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .recipe__img img {
+    max-height: 400px;
+  }
+}
 .recipe__img input {
   opacity: 0;
   position: absolute;
@@ -747,15 +929,23 @@ a {
 }
 
 .add-ingredient__btn {
-  margin-top: 10px;
   background: rgb(240, 255, 0);
   border-radius: 15px;
-  outline: none;
   border: none;
   padding: 5px 10px;
+  transition: transform 0.2s;
+  width: fit-content;
+  height: fit-content;
+  margin: 10px auto 0;
+  cursor: pointer;
+}
+.add-ingredient__btn:hover {
+  outline: 1px solid #000;
 }
 .add-ingredient__btn:active {
   outline: 1px solid #000;
+  transform: scale(98%);
+  background: rgb(221, 243, 0);
 }
 
 .cooking-time, .portions-count {
@@ -818,12 +1008,23 @@ a {
 
 .add-step-btn {
   display: block;
-  margin: 0 auto 30px;
+  width: 250px;
+  text-align: center;
+  margin: 15px auto 30px;
   background: rgb(240, 255, 0);
   border-radius: 25px;
   border: 0;
   font-weight: 200;
   padding: 10px 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.add-step-btn:hover {
+  outline: 1px solid #000;
+}
+.add-step-btn:active {
+  background: rgb(221, 243, 0);
+  transform: scale(99%);
 }
 
 .add-recipe-btn {
@@ -856,12 +1057,16 @@ a {
   font-weight: 600;
   font-size: 18px;
   margin: 15px auto 0;
-  width: auto;
+  max-width: 300px;
 }
 .profile form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+}
+.profile form > div {
+  max-width: 100%;
 }
 @media screen and (min-width: 768px) {
   .profile form {
@@ -920,6 +1125,14 @@ a {
 
 .reg {
   margin: 15px 0 5px 0;
+}
+
+.error {
+  font-size: 0.7em;
+  font-weight: 200;
+  color: red;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=style.css.map */

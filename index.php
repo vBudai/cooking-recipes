@@ -13,13 +13,75 @@
 <body>
 <div class='page'>
 <?php
-    require "data/dbconnect.php";
+session_start();
+    require "database/dbconnect.php";
+    require "database/db.php";
+    require "path.php";
+    if(isset($_GET['logout'])&&$_GET['logout'] == 1){
+        unset($_SESSION['id']);
+        unset($_SESSION['login']);
+        header("location", BASE_URL);
+    }
+
     require "frontend/header.php";
 
+    if(!isset($_GET['page'])){
+        $category = setCategory();
+        require "frontend/main.php";
+    }
+    else{
+        switch ($_GET['page']){
+            case "main":
+                isset($_GET['category']) ? $category = $_GET['category'] : $category = setCategory();
+                require "frontend/main.php";
+                break;
+
+            case "myrecipes":
+                if(isset($_SESSION['id'])){
+                    $id_user = $_SESSION['id'];
+                    require "frontend/myRecipes.php";
+                }
+                else
+                    require "frontend/login_form.php";
+                break;
+
+            case "create-recipe":
+                require "frontend/creationRecipe_form.php";
+                break;
+
+            case "profile":
+                require "frontend/login_form.php";
+                break;
+
+            case "recipe":
+                $id_recipe = $_GET['id_recipe'];
+                require "frontend/recipe.php";
+                $id_recipe = null;
+                break;
+
+            case "search":
+                $title = $_GET['search'];
+                require "frontend/searchedAd.php";
+                break;
+        }
+    }
+
+
+
+
     //require "frontend/recipe.php";
-    //require "frontend/main.php";
     //require "frontend/creationRecipe_form.php";
-    require "frontend/login_form.php"
+    //require "frontend/login_form.php"
+
+function setCategory(){
+    $timeDay = date("H"); // Текущий час
+    return match (TRUE) {
+        $timeDay >= 7 && $timeDay <= 10 => "Завтрак",
+        $timeDay > 12 && $timeDay <= 14 => "Обед",
+        $timeDay >= 18 && $timeDay <= 21 => "Ужин",
+        default => "Перекус",
+    };
+}
 ?>
 
 </div>
