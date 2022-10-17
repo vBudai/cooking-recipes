@@ -42,8 +42,8 @@
 
     if(!isset($_SESSION['id'])){
         $f = $login;
-        header('location: ' .  "https://cooking-recipes/index.php?page=profile");
+        header('location: ' .  "https://yours-recipes.herokuapp.com/index.php?page=profile");
     }
     else{
-        header('location: ' .  "https://cooking-recipes/index.php");
+        header('location: ' .  "https://yours-recipes.herokuapp.com/index.php");
     }
