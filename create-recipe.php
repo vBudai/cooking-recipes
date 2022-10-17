@@ -99,6 +99,7 @@ use Cloudinary\Api\Upload\UploadApi;
         $i++;
     }
     foreach ($steps as $item){
+        if($item['info'] != "")
         insert("step", $item);
     }
 

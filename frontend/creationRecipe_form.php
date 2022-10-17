@@ -49,7 +49,7 @@
             </div>
             <div class="recipe__step margin-btm-15">
                 <div class="step-img__input">
-                    <input name="step_img[]" type="file" id="step-img1" value="Фото шага">
+                    <input class="step-img" name="step_img[]" type="file" id="step-img1" value="Фото шага">
                     <label for="step-img1" class="recipe__input-img-btn">
                         <div class="main-img__container">
                             <img src="./frontend/img/addImg-icon.svg">
@@ -90,12 +90,13 @@
     let stepCount = 1;
     let addStep = document.getElementsByClassName('add-step-btn')[0];
     let steps = document.getElementsByClassName('steps')[0];
+
     addStep.addEventListener('click', function(event) {
         stepCount += 1;
-        steps.innerHTML += "<div class='step__number'>"+ stepCount + "шаг" +"</div>"+
+        steps.innerHTML += "<div class='step__number'>"+ stepCount + " шаг" +"</div>"+
             "<div class='recipe__step margin-btm-15'>"+
                 "<div class='step-img__input'>"+
-                    "<input name='step_img[]' type='file' id='step-img"+ stepCount +"' value='Фото шага'>" +
+                    "<input class='step-img' name='step_img[]' type='file' id='step-img"+ stepCount +"' value='Фото шага'>" +
                     "<label for='step-img"+ stepCount +" 'class='recipe__input-img-btn'>"+
                         "<div class='main-img__container'>"+
                             "<img src='./frontend/img/addImg-icon.svg'>"+
@@ -112,11 +113,30 @@
     //Добавление ингридиентов
     let addIngr = document.getElementsByClassName('add-ingredient__btn')[0];
     let ingrs = document.getElementsByClassName('info__add-ingredient')[0];
+    let ingrsBeforeAdd = [];
     addIngr.addEventListener('click', function (event){
-       ingrs.innerHTML +=
+        ingrsBeforeAdd =  getValuesIngr()
+        ingrs.innerHTML +=
            "<li>"+
                 "<input name='ingredient[]' class='add-ingredient__input' type='text' placeholder='Ингредиент'>"+
            "</li>";
+        setIngrsBack(ingrsBeforeAdd)
     });
 
+    function getValuesIngr(){
+        let inputs = document.querySelectorAll('.add-ingredient__input')
+        let names = []
+        for(let i = 0; i < inputs.length; i++){
+            names.push(inputs[i].value)
+        }
+        return names;
+    }
+
+    function setIngrsBack(names){
+        let inputs = document.querySelectorAll('.add-ingredient__input')
+        for(let i = 0; i < inputs.length-1; i++){
+            inputs[i].setAttribute('value', names[i].toString())
+        }
+
+    }
 </script>
