@@ -1,0 +1,12 @@
+{
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "cloudinary/cloudinary_php": "^2",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
