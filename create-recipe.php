@@ -107,5 +107,5 @@ use Cloudinary\Configuration\Configuration;
         insert("step", $item);
     }
 
-    header("Location: https://cooking-recipes/index.php?page=recipe&id_recipe=$id_recipe");
+    header("Location: https://vbudai.github.io/cooking-recipes/index.php?page=recipe&id_recipe=$id_recipe");
     exit();

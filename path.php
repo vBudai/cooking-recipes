@@ -1,2 +1,2 @@
 <?php
-const BASE_URL = "https://cooking-recipes/";
+const BASE_URL = "https://vbudai.github.io/cooking-recipes/";
