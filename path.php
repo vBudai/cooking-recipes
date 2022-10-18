@@ -1,2 +1,2 @@
 <?php
-const BASE_URL = "https://yours-recipes.herokuapp.com/";
+const BASE_URL = "https://havaihavai.herokuapp.com/";
