@@ -383,6 +383,16 @@ a {
   margin: 0 auto;
   padding: 5px;
 }
+@media screen and (min-width: 425px) {
+  .content-container {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .content-container {
+    width: 450px;
+  }
+}
 @media screen and (min-width: 660px) {
   .content-container {
     width: 660px;
@@ -403,7 +413,12 @@ a {
 }
 @media screen and (min-width: 768px) {
   .recipe__title {
-    font-size: 1.5em;
+    font-size: 1.2em;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .recipe__title {
+    font-size: 1.4em;
   }
 }
 
@@ -424,7 +439,27 @@ a {
 }
 @media screen and (min-width: 768px) {
   .recipe__info {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .recipe__info {
     font-size: 1.25em;
+  }
+}
+
+.recipe__input-img-btn {
+  font-size: 0.8em;
+}
+.recipe__input-img-btn .main-img__container img {
+  margin: 0 auto;
+  height: 24px;
+  width: 24px;
+}
+@media screen and (min-width: 660px) {
+  .recipe__input-img-btn .main-img__container img {
+    height: 32px;
+    width: 32px;
   }
 }
 
@@ -453,16 +488,23 @@ a {
   }
 }
 
+.margin {
+  margin: 10px auto 10px 10px;
+}
+
 .info__ingredients {
   grid-area: ingr;
-  margin: 10px auto 10px 3em;
   text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .info__ingredients {
+    margin-left: 1.6em;
+  }
 }
 .info__ingredients ul {
   list-style: none;
   text-align: start;
   padding: 0;
-  margin: 0;
 }
 
 .info__real-checkbox {
@@ -480,24 +522,54 @@ a {
   background: rgb(240, 255, 0);
 }
 
+.checkbox-label {
+  font-size: 0.85em;
+}
 .checkbox-label:hover .info__custom-checkbox {
   border: 1px solid #000;
+}
+@media screen and (min-width: 600px) {
+  .checkbox-label {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .checkbox-label {
+    font-size: 1.1em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .checkbox-label {
+    font-size: 1em;
+  }
 }
 
 .info__custom-checkbox {
   position: relative;
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border: 1px solid #b6b6b6;
   background: white;
   border-radius: 3px;
   vertical-align: sub;
   margin-bottom: 3px;
 }
+@media screen and (min-width: 600px) {
+  .info__custom-checkbox {
+    height: 12px;
+    width: 12px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .info__custom-checkbox {
+    width: 13px;
+    height: 13px;
+  }
+}
 .info__custom-checkbox:before {
-  height: 12px;
-  width: 12px;
+  height: 8px;
+  width: 8px;
   content: "";
   display: inline-block;
   background-image: url("https://res.cloudinary.com/dx0qgt7t5/image/upload/v1665949434/checked-icon_otu5yt.svg");
@@ -509,6 +581,18 @@ a {
   transform: translate(-50%, -50%) scale(0);
   transition: 0.1s ease-in;
 }
+@media screen and (min-width: 600px) {
+  .info__custom-checkbox:before {
+    height: 10px;
+    width: 10px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .info__custom-checkbox:before {
+    width: 10px;
+    height: 10px;
+  }
+}
 
 .info__cooking-time {
   grid-area: some_Info1;
@@ -518,6 +602,17 @@ a {
   width: 100%;
   text-align: start;
   transform: translate(30%, 0);
+  font-size: 0.85em;
+}
+@media screen and (min-width: 600px) {
+  .info__cooking-time {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .info__cooking-time {
+    font-size: 1.1em;
+  }
 }
 
 .info__portions-count {
@@ -529,8 +624,20 @@ a {
 }
 .info__portions-count > div {
   background: url("../img/portions-icon.svg") no-repeat;
-  background-size: contain;
+  background-size: 15px;
   padding-left: 1.75em;
+  font-size: 0.85em;
+}
+@media screen and (min-width: 600px) {
+  .info__portions-count > div {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .info__portions-count > div {
+    font-size: 1.1em;
+    background-size: contain;
+  }
 }
 
 .recipe__step {
@@ -548,10 +655,15 @@ a {
   background: rgb(240, 255, 0);
   display: inline-block;
   border-radius: 5px;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 700;
   padding: 5px 20px;
   margin-bottom: 10px;
+}
+@media screen and (min-width: 1080px) {
+  .step__number {
+    font-size: 1.25em;
+  }
 }
 
 .step__img img {
@@ -563,13 +675,7 @@ a {
 }
 @media screen and (min-width: 425px) {
   .step__img img {
-    width: 80%;
     margin: 0 auto;
-  }
-}
-@media screen and (min-width: 600px) {
-  .step__img img {
-    width: 100%;
   }
 }
 @media screen and (min-width: 320px) {
@@ -595,12 +701,17 @@ a {
 
 .step__info {
   margin: 5px 0 15px 0;
-  font-size: 1em;
+  font-size: 0.75em;
 }
 @media screen and (min-width: 600px) {
   .step__info {
     grid-area: info;
     padding-left: 1em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .step__info {
+    font-size: 1em;
   }
 }
 
@@ -809,9 +920,15 @@ a {
 }
 
 .recipe__category {
-  margin: 15px 0 10px 0;
+  margin: 0;
   display: inline-block;
   position: relative;
+  font-size: 0.8em;
+}
+@media screen and (min-width: 768px) {
+  .recipe__category {
+    font-size: 1em;
+  }
 }
 
 .select-category {
@@ -819,7 +936,7 @@ a {
   border: 1px solid #b6b6b6;
   border-radius: 5px;
   background: #fff;
-  padding: 2px 25px 2px 10px;
+  padding: 2px 20px 2px 10px;
   outline: none;
   cursor: pointer;
 }
@@ -834,7 +951,7 @@ a {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 8.7px 5px 0 5px;
+  border-width: 6px 4px 0 4px;
   border-color: black transparent transparent transparent;
   pointer-events: none;
 }
@@ -844,6 +961,8 @@ a {
   border-radius: 15px;
   padding: 10px;
   resize: none;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 .recipe__img img {
@@ -889,8 +1008,14 @@ a {
 }
 .recipe__img__input img {
   margin: 0 auto;
-  height: 36px;
-  width: 36px;
+  height: 24px;
+  width: 24px;
+}
+@media screen and (min-width: 660px) {
+  .recipe__img__input img {
+    height: 32px;
+    width: 32px;
+  }
 }
 @media screen and (min-width: 660px) {
   .recipe__img__input {
@@ -944,7 +1069,7 @@ a {
   transition: transform 0.2s;
   width: fit-content;
   height: fit-content;
-  margin: 10px auto 0;
+  margin: 10px auto 0 auto;
   cursor: pointer;
 }
 .add-ingredient__btn:hover {

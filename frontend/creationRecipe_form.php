@@ -27,7 +27,7 @@
                 <textarea name="recipe-info" id="" cols="30" rows="10" placeholder="Описание рецепта"></textarea>
             </div>
             <div class="info__grid">
-                <div class="info__ingredients">
+                <div class="info__ingredients margin">
                     <ul class="info__add-ingredient">
                         <li>
                             <input name="ingredient[]" class="add-ingredient__input" type="text" placeholder="Ингредиент">
@@ -53,7 +53,7 @@
                     <label for="step-img1" class="recipe__input-img-btn">
                         <div class="main-img__container">
                             <img src="./frontend/img/addImg-icon.svg">
-                            <div>Фото Шага</div>
+                            <div class="input-file-text">Фото Шага</div>
                         </div>
                     </label>
                 </div>

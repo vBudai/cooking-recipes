@@ -13,7 +13,7 @@
             session_start();
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['userName'];
-            header('location: ' .  "https://cooking-recipes/index.php?page=profile");
+            header('location: ' .  "https://yours-recipes.herokuapp.com/index.php?page=profile");
         }
         else{
             $f = 'Неправильный пароль!';
@@ -24,8 +24,8 @@
     }
 
     if(!isset($_SESSION['id'])){
-        header('location: ' .  "https://yours-recipes.herokuapp.com//index.php?page=profile");
+        header('location: ' .  "https://yours-recipes.herokuapp.com/index.php?page=profile");
     }
     else{
-        header('location: ' .  "https://yours-recipes.herokuapp.com//index.php");
+        header('location: ' .  "https://yours-recipes.herokuapp.com/index.php");
     }

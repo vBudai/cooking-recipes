@@ -366,6 +366,12 @@ a{
   height: 100%;
   margin: 0 auto;
   padding: 5px;
+  @media screen and (min-width: 425px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 600px) {
+    width: 450px;
+  }
   @media screen and (min-width: 660px) {
     width: 660px;
   }
@@ -380,7 +386,10 @@ a{
   margin-bottom: 10px;
   text-align: start;
   @media screen and (min-width: 768px) {
-    font-size: 1.5em;
+    font-size: 1.2em;
+  }
+  @media screen and (min-width: 1080px) {
+    font-size: 1.4em;
   }
 }
 .recipe__img {
@@ -397,7 +406,25 @@ a{
   margin-top: 15px;
   color: #000;
   @media screen and (min-width: 768px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 1080px) {
     font-size: 1.25em;
+  }
+}
+
+
+
+.recipe__input-img-btn{
+  font-size: 0.8em;
+  .main-img__container img{
+    margin: 0 auto;
+    height: 24px;
+    width: 24px;
+    @media screen and (min-width: 660px) {
+      height: 32px;
+      width: 32px;
+    }
   }
 }
 
@@ -425,15 +452,21 @@ a{
   }
 }
 
+.margin{
+  margin: 10px auto 10px 10px;
+}
+
 .info__ingredients {
   grid-area: ingr;
-  margin: 10px auto 10px 3em;
+
   text-align: center;
+  @media screen and (min-width: 600px) {
+    margin-left: 1.6em;
+  }
   ul{
     list-style: none;
     text-align: start;
     padding: 0;
-    margin: 0;
   }
 }
 
@@ -457,20 +490,38 @@ a{
       border: 1px solid #000;
     }
   }
+  font-size: 0.85em;
+  @media screen and (min-width: 600px) {
+    font-size: 0.9em;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1.1em;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1em;
+  }
 }
 .info__custom-checkbox{
   position: relative;
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border: 1px solid $color-border;
   background: white;
   border-radius: 3px;
   vertical-align: sub;
   margin-bottom: 3px;
-  &:before{
+  @media screen and (min-width: 600px) {
     height: 12px;
     width: 12px;
+  }
+  @media screen and (min-width: 1080px) {
+    width: 13px;
+    height: 13px;
+  }
+  &:before{
+    height: 8px;
+    width: 8px;
     content: '';
     display: inline-block;
     background-image: url("https://res.cloudinary.com/dx0qgt7t5/image/upload/v1665949434/checked-icon_otu5yt.svg");
@@ -481,6 +532,14 @@ a{
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 0.1s ease-in;
+    @media screen and (min-width: 600px) {
+      height: 10px;
+      width: 10px;
+    }
+    @media screen and (min-width: 1080px) {
+      width: 10px;
+      height: 10px;
+    }
   }
 
 }
@@ -493,6 +552,13 @@ a{
   width: 100%;
   text-align: start;
   transform: translate(30%, 0);
+  font-size: 0.85em;
+  @media screen and (min-width: 600px) {
+    font-size: 0.9em;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1.1em;
+  }
 }
 .info__portions-count {
   width: 100%;
@@ -502,8 +568,16 @@ a{
   margin-bottom: 10px;
   &>div{
     background: url("../img/portions-icon.svg") no-repeat;
-    background-size: contain;
+    background-size: 15px;
     padding-left: 1.75em;
+    font-size: 0.85em;
+    @media screen and (min-width: 600px) {
+      font-size: 0.9em;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 1.1em;
+      background-size: contain;
+    }
   }
 }
 .recipe__step {
@@ -519,10 +593,13 @@ a{
   background: $main-color-yellow;
   display: inline-block;
   border-radius: 5px;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 700;
   padding: 5px 20px;
   margin-bottom: 10px;
+  @media screen and (min-width: 1080px) {
+    font-size: 1.25em;
+  }
 }
 
 .step__img {
@@ -533,11 +610,7 @@ a{
     object-fit: cover;
     border-radius: 15px;
     @media screen and (min-width: 425px) {
-      width: 80%;
       margin: 0 auto;
-    }
-    @media screen and (min-width: 600px) {
-      width: 100%;
     }
     @media screen and (min-width: 320px){
       max-height: 150px;
@@ -555,10 +628,13 @@ a{
 }
 .step__info {
   margin: 5px 0 15px 0;
-  font-size: 1em;
+  font-size: 0.75em;
   @media screen and (min-width: 600px) {
     grid-area: info;
     padding-left: 1em;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1em;
   }
 }
 
@@ -767,9 +843,13 @@ a{
 }
 
 .recipe__category{
-  margin: 15px 0 10px 0;
+  margin: 0;
   display: inline-block;
   position: relative;
+  font-size: 0.8em;
+  @media screen and (min-width: 768px){
+    font-size: 1em;
+  }
 }
 
 .select-category{
@@ -777,10 +857,9 @@ a{
   border: 1px solid $color-border;
   border-radius: 5px;
   background: #fff;
-  padding: 2px 25px 2px 10px;
+  padding: 2px 20px 2px 10px;
   outline: none;
   cursor: pointer;
-
 }
 
 .select-arrow{
@@ -795,7 +874,7 @@ a{
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 8.7px 5px 0 5px;
+    border-width: 6px 4px 0 4px;
     border-color: black transparent transparent transparent;
     pointer-events: none;
   }
@@ -806,6 +885,8 @@ a{
   border-radius: 15px;
   padding: 10px;
   resize: none;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 .recipe__img{
@@ -847,8 +928,12 @@ a{
   background: rgba(182, 182, 182, 0.25);
   img{
     margin: 0 auto;
-    height: 36px;
-    width: 36px;
+    height: 24px;
+    width: 24px;
+    @media screen and (min-width: 660px) {
+      height: 32px;
+      width: 32px;
+    }
   }
   @media screen and (min-width: 660px) {
     height: 300px;
@@ -900,7 +985,7 @@ a{
   transition: transform 0.2s;
   width: fit-content;
   height: fit-content;
-  margin: 10px auto 0;
+  margin: 10px auto 0 auto;
   cursor: pointer;
   &:hover{
     outline: 1px solid #000;
