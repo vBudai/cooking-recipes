@@ -13,7 +13,7 @@
             session_start();
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['userName'];
-            header('location: ' .  "https://havaihavai.herokuapp.com/index.php?page=profile");
+            header('location: ' .  "https://havaihavai.herokuapp.com/index.php");
         }
         else{
             $f = 'Неправильный пароль!';
